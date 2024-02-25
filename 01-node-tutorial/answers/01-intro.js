@@ -6,4 +6,4 @@ if (name !== 'Mariya') {
     console.log(`Hello, ${name}.`)
 };
 
-console.log('Welcome to the Node.js class.')
+console.log('Welcome to the Node.js class.');
