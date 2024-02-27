@@ -1,13 +1,13 @@
 const { readFileSync, writeFileSync } = require('fs');
+const path = require('path');
 
-const first = readFileSync('./content/first.txt', 'utf-8');
-const second = readFileSync('./content/second.txt', 'utf-8');
+const filePath = './temporary/fileA.txt';
 
-console.log(first, second);
 
-writeFileSync(
-    './content/result-sync.txt', 
-    `Here is the result : ${first} | ${second}`,
-    { flag: 'a' }
-);
+writeFileSync(filePath, 'First line\n', { flag: 'w' });
+writeFileSync(filePath, 'Second line\n', { flag: 'a' });
+writeFileSync(filePath, 'Third line\n', { flag: 'a' });
+
+const fileContents = readFileSync(filePath, 'utf-8');
+console.log(fileContents);
 
