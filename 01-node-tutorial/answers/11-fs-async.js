@@ -27,6 +27,7 @@ readFile('./content/first.txt', 'utf8', (err, result) => {
                     return;
                 }
                 console.log('Line 2 appended successfully');
+                
                 writeFile('./temporary/fileB.txt', 'Line 3: Additional content\n', { flag: 'a' }, (err) => {
                     if (err) {
                         console.log(err);
