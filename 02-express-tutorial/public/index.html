@@ -1,13 +1,42 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            Express
-        </title>
-    </head>
-    <body>
-        <h1>
-            Hello! How are you?
-        </h1>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express</title>
+</head>
+<body>
+    <h1>Hello? How are you?</h1>
+
+    <button id="fetchDataButton">Fetch Products</button>
+
+    <div id="productList"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fetchDataButton = document.getElementById('fetchDataButton');
+            const productListDiv = document.getElementById('productList');
+
+            fetchDataButton.addEventListener('click', async () => {
+                try {
+                    // Fetch data from /api/v1/products
+                    const response = await fetch('/api/v1/products');
+                    const data = await response.json();
+
+                    // Clear previous data
+                    productListDiv.innerHTML = '';
+
+                    // Append new data to the div
+                    data.forEach(product => {
+                        const productElement = document.createElement('p');
+                        productElement.textContent = `Name: ${product.name}, Price: ${product.price}`;
+                        productListDiv.appendChild(productElement);
+                    });
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            });
+        });
+    </script>
+</body>
 </html>
