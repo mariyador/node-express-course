@@ -2,16 +2,16 @@ const EventEmitter = require("events");
 
 const customEmitter = new EventEmitter();
 
-let studentAge = 21;
+let age = { value: 21 };
 
 setInterval(() => {
-    customEmitter.emit('meeting',  'Anna', 'New York', studentAge)
+    customEmitter.emit('meeting', 'Anna', 'New York', age)
 }, 1000);
 
 customEmitter.on('meeting', (name, location, age)=>{
-    console.log(`This is ${name}. She is ${age} years old and she is from ${location}.`)
-    studentAge++;
-    customEmitter.emit('msg', `Next year, ${name} will be ${studentAge} years old.`);
+    console.log(`This is ${name}. She is ${age.value} years old and she is from ${location}.`)
+    age.value++;
+    customEmitter.emit('msg', `Next year, ${name} will be ${age.value} years old.`);
 });
 
 customEmitter.on('msg', (newMsg) => {

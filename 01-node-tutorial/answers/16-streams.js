@@ -13,7 +13,7 @@ stream.on('data', (chunk) => {
 });
 
 stream.on('end', () => {
-    console.log('The number of chunks received.');
+    console.log( `Number of chunks received: ${counter}`);
 });
 
 stream.on('error', (err) => {
