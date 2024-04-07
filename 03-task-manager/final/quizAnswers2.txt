@@ -1,0 +1,14 @@
+1. In this lesson, you created a middleware function called asyncWrapper. Why?
+
+   The asyncWrapper is a helper function that makes sure your Express route handlers can deal with asynchronous operations smoothly. 
+   By using asyncWrapper, you centralize error handling for asynchronous operations. 
+   This makes your route handlers cleaner and easier to read, as you don't need to include try...catch blocks in each one.
+
+2.  const getTask = asyncWrapper(async (req, res, next) => {
+    const { id: taskID } = req.params;
+    const task = await Task.findOne({ _id: taskID });
+    if (!task) {
+        return next(createCustomError(`There are no tasks with id: ${taskID}`, 404));
+        }
+        res.status(200).json({ task });
+    });
